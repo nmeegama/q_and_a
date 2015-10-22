@@ -1,0 +1,12 @@
+name = Q&A
+description = A module for questions and answers
+core = 7.x
+version = 7.x-1.0
+package = Axelerant modules
+dependencies[] = field
+
+; Classes
+files[] = includes/q_and_a.controller.inc
+
+; Utility functions
+files[] = includes/q_and_a.question.utilities.inc

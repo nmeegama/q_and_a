@@ -1,0 +1,76 @@
+<?php
+/**
+ * @file
+ * Install file for the Q&A module
+ *
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function q_and_a_schema() {
+  $schema['q_and_a_questions'] = array(
+    'description' => 'The main table for questions',
+    'fields' => array(
+      'qid' => array(
+        'description' => 'Primary key for question table',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'question_title' => array(
+        'description' => 'The column that stores the title of the question',
+        'type' => 'varchar',
+        'length' => '255',
+        'not null' => FALSE,
+      ),
+      'question' => array(
+        'description' => 'The column that stores the Question',
+        'type' => 'text',
+        'size' => 'big',
+        'not null' => FALSE,
+      ),
+      'num_votes' => array(
+        'description' => 'This column will hold the number of votes for the question',
+        'type' => 'int',
+        'length' => 10,
+        'not null' => FALSE,
+      ),
+      'num_views' => array(
+        'description' => 'This column will hold the number of views of this question',
+        'type' => 'int',
+        'length' => 10,
+        'not null' => FALSE,
+      ),
+      'num_answers' => array(
+        'description' => 'This column will hold the number of answers for this question',
+        'type' => 'int',
+        'length' => 10,
+        'not null' => FALSE,
+      ),
+      'created' => array(
+        'description' => 'The Unix timestamp of the entity creation time.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'updated' => array(
+        'description' => 'The Unix timestamp of the entity update time.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+    ),
+    'primary key' => array('qid'),
+  );
+  return $schema;
+}
+
+
+/**
+ * Implements hook_uninstall().
+ */
+function q_and_a_uninstall() {
+  //delete all data for q_and_a_question bundle
+  field_attach_delete_bundle('q_and_a_question', 'q_and_a_question');
+}

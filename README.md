@@ -1,7 +1,7 @@
 # q_and_a
 A Drupal module for Question and answers
 
---- Setting Up ---
+--- Setting Up ---</br>
 Clone the repository
 Get the tar file in the site-backup folder and unzip it
 Create a new database in mysql
